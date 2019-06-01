@@ -1,3 +1,7 @@
+var os = require('os');
+
+var OSinfo = require('../modules/OSInfo');
+
 process.stdin.setEncoding('utf-8');
 
 process.stdin.on('readable', function() {
@@ -15,8 +19,11 @@ process.stdin.on('readable', function() {
             case '/process.env':
                 console.log(process.env);
                 break;
+            case '/getOSinfo':
+                OSinfo.print();  
+                break;
             default:
-                console.log('Wrong instruction!\n');
+                process.stderr.write('Wrong instruction!\n');
         }
     }
 });
